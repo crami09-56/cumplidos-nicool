@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Generador de cumplidos — Nicool 💖</title>
+  <style>
+    :root{
+      --bg1: #ffd6e9;
+      --bg2: #fff0f6;
+      --accent: #ff4da6;
+      --muted: #4b4b4b;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family: "Poppins", system-ui, sans-serif;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      overflow:hidden;
+    }
+
+    .card{
+      width:clamp(300px,86vw,720px);
+      background: rgba(255,255,255,0.65);
+      border-radius:18px;
+      padding:28px;
+      text-align:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+      position:relative;
+    }
+
+    h1{
+      color:var(--accent);
+      font-size:clamp(1.4rem,3.6vw,2rem);
+      margin-bottom:8px;
+      letter-spacing:0.6px;
+    }
+
+    .subtitle{
+      color:#ff4da6;
+      font-family:'Brush Script MT','Segoe Script',cursive;
+      font-size:clamp(1.1rem,2.8vw,1.6rem);
+      text-shadow: 0 0 6px #ffb3d9, 0 0 12px #fff;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      display:inline-block;
+      background: linear-gradient(90deg,var(--accent),#ff85c1);
+      color:white;
+      border:none;
+      padding:12px 22px;
+      border-radius:12px;
+      font-size:1rem;
+      cursor:pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 6px 18px rgba(255,77,166,0.24);
+    }
+    .btn:active{ transform: translateY(2px) }
+    .btn:hover{ box-shadow: 0 10px 30px rgba(255,77,166,0.28) }
+
+    #cumplido{
+      margin-top:22px;
+      min-height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:clamp(1rem,2.5vw,1.2rem);
+      color:#333;
+      padding:10px 16px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.75);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      opacity:1;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .heart{
+      position:absolute;
+      width:18px;height:18px;
+      transform: rotate(-45deg);
+      left:50%;
+      top:50%;
+      opacity:0.9;
+      pointer-events:none;
+    }
+    .heart::before, .heart::after{
+      content:"";
+      position:absolute;
+      width:18px;height:18px;
+      background:var(--accent);
+      border-radius:50%;
+    }
+    .heart::after{ left:9px }
+    .h1{ left:8%; top:12%; animation: float1 6s linear infinite; opacity:.7 }
+    .h2{ left:85%; top:20%; animation: float2 7s linear infinite; transform:scale(.9) }
+    .h3{ left:20%; top:78%; animation: float3 5.5s linear infinite; transform:scale(.8) }
+    .h4{ left:68%; top:82%; animation: float1 6.5s linear infinite; transform:scale(.75) opacity:.8 }
+
+    @keyframes float1{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-18px) } 100%{ transform:translateY(0) } }
+    @keyframes float2{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-26px) } 100%{ transform:translateY(0) } }
+    @keyframes float3{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-12px) } 100%{ transform:translateY(0) } }
+
+    @media (max-width:420px){
+      .card{ padding:20px;border-radius:14px }
+      #cumplido{ font-size:1rem; min-height:64px }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💖 Generador de cumplidos para Nicool 💖</h1>
+    <div class="subtitle">para la niña con los ojitos más hermosos ✨</div>
+
+    <button class="btn" id="btn">Dame un cumplido 🌸</button>
+
+    <div id="cumplido"></div>
+
+    <div class="heart h1"></div>
+    <div class="heart h2"></div>
+    <div class="heart h3"></div>
+    <div class="heart h4"></div>
+  </div>
+
+  <script>
+    const cumplidos = [
+      "Tienes una sonrisa que alegra el día 🌞",
+      "Eres más brillante que un millón de estrellas ✨",
+      "Tu forma de ser es simplemente única 💕",
+      "Contigo todo es más divertido 😄",
+      "Tu energía ilumina cualquier lugar 🌷",
+      "Eres una persona increíble, nunca lo dudes 💫",
+      "Tu risa debería ser patrimonio de la humanidad 😂",
+      "Siempre haces que los demás se sientan mejor 💗",
+      "Tienes una vibra que da paz 🕊️",
+      "Eres arte en forma humana 🎨",
+      "Tus ojos cuentan historias que me encantan 👀",
+      "Eres dulce como el mejor postre 🍓",
+      "Tu mirada tiene magia propia ✨"
+    ];
+
+    const btn = document.getElementById('btn');
+    const out = document.getElementById('cumplido');
+
+    function mostrarCumplido() {
+      const i = Math.floor(Math.random() * cumplidos.length);
+      out.textContent = cumplidos[i];
+      out.classList.remove('show');
+      void out.offsetWidth; // reinicia la animación
+      out.classList.add('show');
+    }
+
+    btn.addEventListener('click', mostrarCumplido);
+  </script>
+</body>
+</html>
