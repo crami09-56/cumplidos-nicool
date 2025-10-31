@@ -5,126 +5,119 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Generador de cumplidos — Nicool 💖</title>
 <style>
-  :root {
-    --bg1: #1f1c2c;
-    --bg2: #928dab;
-    --accent1: #ff4da6;
-    --accent2: #ff85c1;
-    --text-color: #fff;
-    --heart-color: #ff4da6;
-  }
+:root {
+  --bg1: #1f1c2c;
+  --bg2: #928dab;
+  --accent1: #ff4da6;
+  --accent2: #ff85c1;
+  --text-color: #fff;
+}
 
-  *{box-sizing:border-box;margin:0;padding:0}
+/* Reset */
+* { box-sizing: border-box; margin:0; padding:0; }
 
-  body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family: "Poppins", system-ui, sans-serif;
-    background: linear-gradient(180deg,var(--bg1),var(--bg2));
-    overflow:hidden;
-    padding:20px;
-  }
+body {
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:"Poppins", system-ui, sans-serif;
+  background: linear-gradient(180deg, var(--bg1), var(--bg2));
+  overflow:hidden;
+  padding:20px;
+}
 
-  /* Letras flotantes que caen */
-  .falling-letter {
-    position: absolute;
-    font-size: 18px;
-    color: var(--accent1);
-    opacity: 0.6;
-    user-select: none;
-    pointer-events: none;
-    animation-name: fall;
-    animation-timing-function: linear;
-  }
+/* Cartas flotantes de frases */
+.falling-text {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.8;
+  pointer-events: none;
+  white-space: nowrap;
+  color: #ff85c1;
+  animation-name: fallText;
+  animation-timing-function: linear;
+}
 
-  @keyframes fall {
-    0% { transform: translateY(-50px) rotate(0deg); opacity: 0.5; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-  }
+@keyframes fallText {
+  0% { transform: translateY(-50px); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
 
-  .card {
-    width: clamp(320px, 85vw, 720px);
-    background: rgba(255,255,255,0.15);
-    border-radius: 24px;
-    padding: 30px 28px;
-    text-align:center;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    position: relative;
-    overflow: hidden;
-    color: var(--text-color);
-    animation: fadeIn 1.2s ease forwards;
-    opacity: 0;
-  }
+/* Tarjeta principal */
+.card {
+  width: clamp(320px,85vw,720px);
+  background: rgba(255,255,255,0.15);
+  border-radius: 24px;
+  padding: 32px 28px;
+  text-align:center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  color: var(--text-color);
+  position: relative;
+}
 
-  @keyframes fadeIn { to { opacity: 1; } }
+/* Títulos */
+h1 {
+  font-size: clamp(1.8rem,4vw,2.4rem);
+  margin-bottom:10px;
+  text-shadow: 0 0 10px var(--accent1), 0 0 20px var(--accent2);
+}
+.subtitle {
+  font-family:'Brush Script MT','Segoe Script',cursive;
+  font-size: clamp(1.2rem,3vw,1.6rem);
+  text-shadow: 0 0 8px var(--accent2);
+  margin-bottom: 24px;
+}
 
-  h1{
-    font-size: clamp(1.8rem,4vw,2.4rem);
-    margin-bottom:10px;
-    text-shadow: 0 0 10px var(--accent1), 0 0 20px var(--accent2);
-  }
+/* Botón */
+.btn {
+  display:inline-block;
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:white;
+  border:none;
+  padding:14px 26px;
+  border-radius:16px;
+  font-size:1rem;
+  cursor:pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 8px 30px rgba(255,77,166,0.6);
+  margin-top:10px;
+}
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 40px rgba(255,77,166,0.8);
+}
+.btn:active { transform: scale(0.97); }
 
-  .subtitle{
-    font-family:'Brush Script MT','Segoe Script',cursive;
-    font-size: clamp(1.2rem,3vw,1.6rem);
-    text-shadow: 0 0 8px var(--accent2);
-    margin-bottom: 24px;
-  }
+/* Cuadro de cumplido */
+#cumplido {
+  margin-top:24px;
+  min-height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: clamp(1rem,2.5vw,1.3rem);
+  color:#fff;
+  padding:16px 20px;
+  border-radius:14px;
+  background: rgba(0,0,0,0.3);
+  text-shadow: 0 0 6px #ff85c1, 0 0 12px #ff4da6;
+  opacity:0;
+  transform: translateY(10px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.show { transform: translateY(0); opacity:1; }
 
-  .btn{
-    display:inline-block;
-    background: linear-gradient(90deg,var(--accent1),var(--accent2));
-    color:white;
-    border:none;
-    padding:14px 26px;
-    border-radius:16px;
-    font-size:1rem;
-    cursor:pointer;
-    transition: transform .2s ease, box-shadow .2s ease;
-    box-shadow: 0 8px 30px rgba(255,77,166,0.6);
-    margin-top:10px;
-  }
-  .btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 12px 40px rgba(255,77,166,0.8);
-  }
-  .btn:active {
-    transform: scale(0.97);
-  }
-
-  #cumplido{
-    margin-top:24px;
-    min-height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size: clamp(1rem,2.5vw,1.3rem);
-    color:#fff;
-    padding:16px 20px;
-    border-radius:14px;
-    background: rgba(0,0,0,0.3);
-    text-shadow: 0 0 6px #ff85c1, 0 0 12px #ff4da6;
-    opacity:0;
-    transform: translateY(10px);
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-
-  .show{
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  @media (max-width:420px){
-    .card { padding: 22px; border-radius: 20px; }
-    #cumplido { font-size:1rem; min-height:64px; }
-    h1 { font-size:1.6rem; }
-    .subtitle { font-size:1.2rem; }
-    .btn { padding:12px 20px; font-size:0.95rem; }
-  }
+@media (max-width:420px){
+  .card { padding: 22px; border-radius: 20px; }
+  #cumplido { font-size:1rem; min-height:64px; }
+  h1 { font-size:1.6rem; }
+  .subtitle { font-size:1.2rem; }
+  .btn { padding:12px 20px; font-size:0.95rem; }
+}
 </style>
 </head>
 <body>
@@ -193,35 +186,41 @@ const cumplidos = [
   "Eres un motivo para sonreír todos los días 😊"
 ];
 
+const cuteTexts = [
+  "💖 Eres genial!",
+  "✨ Qué linda sonrisa!",
+  "🌸 Eres un rayito de sol",
+  "💫 Brillas mucho!",
+  "😍 Qué linda energía",
+  "🌷 Siempre iluminas",
+  "🎶 Tu risa es música",
+  "💛 Corazón gigante!"
+];
+
 const btn = document.getElementById('btn');
 const out = document.getElementById('cumplido');
 
-function mostrarCumplido() {
+btn.addEventListener('click', () => {
   const i = Math.floor(Math.random() * cumplidos.length);
   out.textContent = cumplidos[i];
   out.classList.remove('show');
   void out.offsetWidth;
   out.classList.add('show');
-}
-btn.addEventListener('click', mostrarCumplido);
+});
 
-/* Animación de letras que caen */
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz✨💖🌸💫";
-function createFallingLetter() {
+/* Frases que caen desde arriba */
+function createFallingText() {
   const span = document.createElement('span');
-  span.className = 'falling-letter';
+  span.className = 'falling-text';
   span.style.left = Math.random() * 100 + 'vw';
-  span.style.fontSize = (10 + Math.random() * 24) + 'px';
-  span.style.color = `hsl(${Math.random()*360}, 80%, 70%)`;
+  span.style.fontSize = (12 + Math.random()*18) + 'px';
+  span.style.color = `hsl(${Math.random()*360},80%,70%)`;
   span.style.animationDuration = (4 + Math.random()*4) + 's';
-  span.textContent = letters[Math.floor(Math.random() * letters.length)];
+  span.textContent = cuteTexts[Math.floor(Math.random()*cuteTexts.length)];
   document.body.appendChild(span);
-
-  setTimeout(() => {
-    span.remove();
-  }, 8000);
+  setTimeout(() => { span.remove(); }, 8000);
 }
-setInterval(createFallingLetter, 200);
+setInterval(createFallingText, 250);
 </script>
 </body>
 </html>
