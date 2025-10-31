@@ -1,200 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Generador de cumplidos — Nicool 💖</title>
-  <style>
-    :root{
-      --bg1: #ffd6e9;
-      --bg2: #fff0f6;
-      --accent: #ff4da6;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family: "Poppins", system-ui, sans-serif;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      overflow:hidden;
-    }
-    .card{
-      width:clamp(300px,86vw,720px);
-      background: rgba(255,255,255,0.65);
-      border-radius:18px;
-      padding:28px;
-      text-align:center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      backdrop-filter: blur(6px);
-      position:relative;
-    }
-    h1{
-      color:var(--accent);
-      font-size:clamp(1.4rem,3.6vw,2rem);
-      margin-bottom:8px;
-      letter-spacing:0.6px;
-    }
-    .subtitle{
-      color:#ff4da6;
-      font-family:'Brush Script MT','Segoe Script',cursive;
-      font-size:clamp(1.1rem,2.8vw,1.6rem);
-      text-shadow: 0 0 6px #ffb3d9, 0 0 12px #fff;
-      margin-bottom:18px;
-    }
-    .btn{
-      display:inline-block;
-      background: linear-gradient(90deg,var(--accent),#ff85c1);
-      color:white;
-      border:none;
-      padding:12px 22px;
-      border-radius:12px;
-      font-size:1rem;
-      cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease;
-      box-shadow: 0 6px 18px rgba(255,77,166,0.24);
-    }
-    .btn:active{ transform: translateY(2px) }
-    .btn:hover{ box-shadow: 0 10px 30px rgba(255,77,166,0.28) }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>✨ Generador de cumplidos mágicos — Nicool 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent1: #ff4da6;
+    --accent2: #ff85c1;
+    --bg1: #ffd6e9;
+    --bg2: #fff0f6;
+    --text: #333;
+  }
 
-    #cumplido{
-      margin-top:22px;
-      min-height:56px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:clamp(1rem,2.5vw,1.2rem);
-      color:#333;
-      padding:10px 16px;
-      border-radius:12px;
-      background: rgba(255,255,255,0.75);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
-      opacity:0;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    #cumplido.show{
-      opacity:1;
-      transform: translateY(0);
-    }
-    .heart{
-      position:absolute;
-      width:18px;height:18px;
-      transform: rotate(-45deg);
-      pointer-events:none;
-      opacity:0.8;
-    }
-    .heart::before, .heart::after{
-      content:"";
-      position:absolute;
-      width:18px;height:18px;
-      background:var(--accent);
-      border-radius:50%;
-    }
-    .heart::after{ left:9px }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins', sans-serif;}
 
-    @keyframes float{
-      0%{ transform: translateY(0) }
-      50%{ transform: translateY(-20px) }
-      100%{ transform: translateY(0) }
-    }
+  body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    overflow:hidden;
+    position:relative;
+  }
 
-    @media (max-width:420px){
-      .card{ padding:20px;border-radius:14px }
-      #cumplido{ font-size:1rem; min-height:64px }
-    }
-  </style>
+  .card{
+    width:clamp(320px,80vw,720px);
+    background: rgba(255,255,255,0.6);
+    border-radius:20px;
+    padding:32px;
+    text-align:center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(8px);
+    position:relative;
+    animation: pulse 4s infinite alternate;
+  }
+
+  @keyframes pulse{
+    0%{ transform: scale(1);}
+    50%{ transform: scale(1.02);}
+    100%{ transform: scale(1);}
+  }
+
+  h1{
+    font-size:clamp(1.6rem,4vw,2.4rem);
+    color: var(--accent1);
+    margin-bottom:12px;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ffb3d9;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow{
+    0%{ text-shadow: 0 0 6px #fff, 0 0 12px #ffb3d9;}
+    100%{ text-shadow: 0 0 12px #fff, 0 0 24px #ff85c1;}
+  }
+
+  .subtitle{
+    font-family:'Brush Script MT', cursive;
+    font-size:clamp(1.2rem,3vw,1.8rem);
+    color:#ff4da6;
+    text-shadow: 0 0 6px #ffb3d9, 0 0 12px #fff;
+    margin-bottom:20px;
+  }
+
+  .btn{
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color:white;
+    border:none;
+    padding:14px 26px;
+    border-radius:16px;
+    font-size:1.1rem;
+    cursor:pointer;
+    box-shadow: 0 8px 20px rgba(255,77,166,0.3);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform: scale(1.05); box-shadow: 0 12px 30px rgba(255,77,166,0.5);}
+  .btn:active{ transform: scale(0.98); }
+
+  #cumplido{
+    margin-top:26px;
+    min-height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(1.1rem,2.8vw,1.4rem);
+    color:var(--text);
+    padding:12px 20px;
+    border-radius:14px;
+    background: rgba(255,255,255,0.75);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    opacity:0;
+    transform: translateY(20px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+  #cumplido.show{
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  .heart, .particle{
+    position:absolute;
+    width:20px; height:20px;
+    transform: rotate(-45deg);
+    pointer-events:none;
+  }
+  .heart::before, .heart::after, .particle::before, .particle::after{
+    content:"";
+    position:absolute;
+    width:20px; height:20px;
+    border-radius:50%;
+  }
+  .heart::before, .particle::before{ background:#ff4da6; }
+  .heart::after, .particle::after{ background:#ff85c1; left:10px; }
+
+</style>
 </head>
 <body>
-  <div class="card">
-    <h1>💖 Generador de cumplidos para Nicool 💖</h1>
-    <div class="subtitle">para la niña con los ojitos más hermosos ✨</div>
 
-    <button class="btn" id="btn">Dame un cumplido 🌸</button>
+<div class="card">
+  <h1>💖 Cumplidos Mágicos para Nicool 💖</h1>
+  <div class="subtitle">para la niña que ilumina corazones ✨</div>
+  <button class="btn" id="btn">Dame un cumplido 🌸</button>
+  <div id="cumplido"></div>
+</div>
 
-    <div id="cumplido"></div>
-  </div>
+<script>
+const cumplidos = [
+  "Eres increíble tal como eres 💖",
+  "Tu sonrisa hace que todo sea mejor 😄",
+  "Tienes un estilo que siempre sorprende 👏",
+  "Eres divertida y contagias alegría 🌟",
+  "Tu mirada tiene algo que encanta 👀",
+  "Eres fuerte y eso inspira 💪",
+  "Tu risa es un regalo para quienes te rodean 🎁",
+  "Eres dulce sin esfuerzo 🍓",
+  "Siempre sabes cómo alegrar un lugar 🌈",
+  "Eres única y eso te hace especial 💕",
+  "Tu energía es imposible de ignorar ✨",
+  "Eres encantadora sin siquiera intentarlo 😍",
+  "Tu forma de ser ilumina cualquier día 🌞",
+  "Eres creativa y llena de ideas geniales 🎨",
+  "Tu alegría es contagiosa y linda 😄",
+  "Eres como un abrazo cálido en un día frío 🤗",
+  "Tu personalidad brilla más que cualquier estrella ⭐",
+  "Eres divertida y siempre haces sonreír 😌",
+  "Tu estilo y tu forma de ser combinan perfecto 👗",
+  "Eres un soplo de aire fresco 💨",
+  "Tu risa podría alegrar cualquier habitación 🎶",
+  "Eres dulce, fuerte y valiente 💖",
+  "Siempre sabes cómo hacer sentir bien a los demás 🌸",
+  "Eres luz en los días grises 💡",
+  "Tu sonrisa podría iluminar ciudades enteras 🌆",
+  "Eres un rayito de sol incluso en días nublados 🌤️",
+  "Tu entusiasmo es contagioso y lindo 🌷",
+  "Eres un arcoíris después de la tormenta 🌈",
+  "Tu presencia hace que todo sea más bonito 🌟",
+  "Eres inspiración sin siquiera intentarlo 💫",
+  "Tu corazón es gigante y lleno de amor 💛",
+  "Eres magia pura ✨",
+  "Tu forma de ser hace que todos se sientan mejor 😄",
+  "Eres un regalo que alegra la vida de otros 🎁",
+  "Tu mirada transmite paz y calma 🕊️",
+  "Eres única, y eso te hace brillante 💖",
+  "Tu risa es música para quien la escucha 🎵",
+  "Eres creatividad en acción 🎨",
+  "Tu alegría hace que los días normales sean especiales 🌸",
+  "Eres dulce como el mejor postre 🍫",
+  "Tu bondad se nota en todo lo que haces 💛",
+  "Eres como un abrazo que calma el alma 🤗",
+  "Tu energía positiva hace todo más bonito ✨",
+  "Eres un sol que nunca deja de brillar 🌞",
+  "Tu ternura derrite corazones 💗",
+  "Eres inspiración para quienes te rodean 🌷",
+  "Tu presencia ilumina cualquier lugar 🌟",
+  "Eres un soplo de felicidad 💨",
+  "Tu sonrisa es contagio de alegría 😍",
+  "Eres luz y alegría al mismo tiempo 🌈",
+  "Tu personalidad es encantadora y genuina 💖",
+  "Eres un motivo para sonreír todos los días 😊"
+];
 
-  <script>
-    const cumplidos = [
-      "Eres increíble tal como eres 💖",
-      "Tu sonrisa hace que todo sea mejor 😄",
-      "Tienes un estilo que siempre sorprende 👏",
-      "Eres divertida y contagias alegría 🌟",
-      "Tu mirada tiene algo que encanta 👀",
-      "Eres fuerte y eso inspira 💪",
-      "Tu risa es un regalo para quienes te rodean 🎁",
-      "Eres dulce sin esfuerzo 🍓",
-      "Siempre sabes cómo alegrar un lugar 🌈",
-      "Eres única y eso te hace especial 💕",
-      "Tu energía es imposible de ignorar ✨",
-      "Eres encantadora sin siquiera intentarlo 😍",
-      "Tu forma de ser ilumina cualquier día 🌞",
-      "Eres creativa y llena de ideas geniales 🎨",
-      "Tu alegría es contagiosa y linda 😄",
-      "Eres como un abrazo cálido en un día frío 🤗",
-      "Tu personalidad brilla más que cualquier estrella ⭐",
-      "Eres divertida y siempre haces sonreír 😌",
-      "Tu estilo y tu forma de ser combinan perfecto 👗",
-      "Eres un soplo de aire fresco 💨",
-      "Tu risa podría alegrar cualquier habitación 🎶",
-      "Eres dulce, fuerte y valiente 💖",
-      "Siempre sabes cómo hacer sentir bien a los demás 🌸",
-      "Eres luz en los días grises 💡",
-      "Tu sonrisa podría iluminar ciudades enteras 🌆",
-      "Eres un rayito de sol incluso en días nublados 🌤️",
-      "Tu entusiasmo es contagioso y lindo 🌷",
-      "Eres un arcoíris después de la tormenta 🌈",
-      "Tu presencia hace que todo sea más bonito 🌟",
-      "Eres inspiración sin siquiera intentarlo 💫",
-      "Tu corazón es gigante y lleno de amor 💛",
-      "Eres magia pura ✨",
-      "Tu forma de ser hace que todos se sientan mejor 😄",
-      "Eres un regalo que alegra la vida de otros 🎁",
-      "Tu mirada transmite paz y calma 🕊️",
-      "Eres única, y eso te hace brillante 💖",
-      "Tu risa es música para quien la escucha 🎵",
-      "Eres creatividad en acción 🎨",
-      "Tu alegría hace que los días normales sean especiales 🌸",
-      "Eres dulce como el mejor postre 🍫",
-      "Tu bondad se nota en todo lo que haces 💛",
-      "Eres como un abrazo que calma el alma 🤗",
-      "Tu energía positiva hace todo más bonito ✨",
-      "Eres un sol que nunca deja de brillar 🌞",
-      "Tu ternura derrite corazones 💗",
-      "Eres inspiración para quienes te rodean 🌷",
-      "Tu presencia ilumina cualquier lugar 🌟",
-      "Eres un soplo de felicidad 💨",
-      "Tu sonrisa es contagio de alegría 😍",
-      "Eres luz y alegría al mismo tiempo 🌈",
-      "Tu personalidad es encantadora y genuina 💖",
-      "Eres un motivo para sonreír todos los días 😊"
-    ];
+const btn = document.getElementById('btn');
+const out = document.getElementById('cumplido');
 
-    const btn = document.getElementById('btn');
-    const out = document.getElementById('cumplido');
+function mostrarCumplido(){
+  const i = Math.floor(Math.random() * cumplidos.length);
+  out.textContent = cumplidos[i];
+  out.classList.remove('show');
+  void out.offsetWidth;
+  out.classList.add('show');
 
-    function mostrarCumplido() {
-      // Elegir cumplido aleatorio
-      const i = Math.floor(Math.random() * cumplidos.length);
-      out.textContent = cumplidos[i];
-      out.classList.remove('show');
-      void out.offsetWidth; 
-      out.classList.add('show');
+  // Crear 5 corazones y partículas por cumplido
+  for(let j=0;j<5;j++){
+    crearCorazon();
+    crearParticula();
+  }
+}
 
-      // Crear corazón flotante
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 90 + '%';
-      heart.style.top = Math.random() * 80 + '%';
-      heart.style.animation = `float ${2 + Math.random()*3}s ease-in-out forwards`;
-      document.body.appendChild(heart);
+function crearCorazon(){
+  const heart = document.createElement('div');
+  heart.className='heart';
+  heart.style.left = Math.random()*90+'%';
+  heart.style.top = Math.random()*80+'%';
+  heart.style.width = heart.style.height = 15 + Math.random()*15 + 'px';
+  document.body.appendChild(heart);
+  // Animación flotante
+  heart.animate([
+    {transform:'translateY(0px) rotate(-45deg)', opacity:1},
+    {transform:'translateY(-60px) rotate(-45deg)', opacity:0}
+  ], {duration:2000 + Math.random()*2000, easing:'ease-out'});
+  setTimeout(()=>heart.remove(),4000);
+}
 
-      // Eliminar corazón después de 4 segundos
-      setTimeout(() => heart.remove(), 4000);
-    }
+function crearParticula(){
+  const particle = document.createElement('div');
+  particle.className='particle';
+  particle.style.left = Math.random()*100+'%';
+  particle.style.top = Math.random()*100+'%';
+  particle.style.width = particle.style.height = 5 + Math.random()*10+'px';
+  document.body.appendChild(particle);
+  particle.animate([
+    {transform:'translateY(0px)', opacity:1},
+    {transform:'translateY(-40px)', opacity:0}
+  ], {duration:1500 + Math.random()*1500, easing:'ease-out'});
+  setTimeout(()=>particle.remove(),3000);
+}
 
-    btn.addEventListener('click', mostrarCumplido);
-  </script>
+btn.addEventListener('click',mostrarCumplido);
+
+</script>
 </body>
 </html>
