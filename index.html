@@ -5,112 +5,97 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Generador de cumplidos — Nicool 💖</title>
   <style>
-    :root{
+    :root {
       --bg1: #ffd6e9;
       --bg2: #fff0f6;
       --accent: #ff4da6;
+      --light-accent: #ff85c1;
       --muted: #4b4b4b;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-family: "Poppins", system-ui, sans-serif;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      overflow-x:hidden;
-      padding:20px;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow-x: hidden;
+      padding: 20px;
     }
 
-    /* Mensaje inicial animado */
-    .mensaje-inicial {
-      width: clamp(280px, 80vw, 720px);
-      margin-bottom: 16px;
-      padding: 16px 22px;
-      background: rgba(255, 77, 166, 0.15);
-      border-radius: 14px;
+    /* Contenedor del generador */
+    .card {
+      width: clamp(320px, 86vw, 720px);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 22px;
+      padding: 30px 28px;
       text-align: center;
-      font-size: clamp(0.95rem, 2.3vw, 1.1rem);
-      color: #ff4da6;
-      font-weight: 500;
-      box-shadow: 0 4px 12px rgba(255,77,166,0.2);
-      opacity: 0;
-      transform: translateY(-30px);
-      animation: aparecer 1s ease forwards;
-      animation-delay: 0.3s;
-    }
-
-    @keyframes aparecer {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .card{
-      width:clamp(300px,86vw,720px);
-      background: rgba(255,255,255,0.65);
-      border-radius:18px;
-      padding:28px;
-      text-align:center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-      backdrop-filter: blur(6px);
-      position:relative;
-      animation: cardFade 1s ease forwards;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
+      position: relative;
+      animation: cardAppear 1s ease forwards;
       opacity: 0;
     }
 
-    @keyframes cardFade {
-      to { opacity: 1; }
+    @keyframes cardAppear {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(-20px); }
     }
 
-    h1{
-      color:var(--accent);
-      font-size:clamp(1.4rem,3.6vw,2rem);
-      margin-bottom:8px;
-      letter-spacing:0.6px;
+    h1 {
+      color: var(--accent);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px #ffb3d9, 0 0 20px #fff;
     }
 
-    .subtitle{
-      color:#ff4da6;
-      font-family:'Brush Script MT','Segoe Script',cursive;
-      font-size:clamp(1.1rem,2.8vw,1.6rem);
+    .subtitle {
+      color: var(--accent);
+      font-family: 'Brush Script MT','Segoe Script',cursive;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
       text-shadow: 0 0 6px #ffb3d9, 0 0 12px #fff;
-      margin-bottom:18px;
+      margin-bottom: 22px;
     }
 
-    .btn{
-      display:inline-block;
-      background: linear-gradient(90deg,var(--accent),#ff85c1);
-      color:white;
-      border:none;
-      padding:12px 22px;
-      border-radius:12px;
-      font-size:1rem;
-      cursor:pointer;
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent), var(--light-accent));
+      color: white;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 14px;
+      font-size: 1rem;
+      cursor: pointer;
       transition: transform .2s ease, box-shadow .2s ease;
-      box-shadow: 0 6px 20px rgba(255,77,166,0.24);
-      margin-top:10px;
+      box-shadow: 0 8px 25px rgba(255,77,166,0.24);
     }
-    .btn:active{ transform: translateY(2px) scale(0.98); }
-    .btn:hover{ box-shadow: 0 10px 30px rgba(255,77,166,0.28); transform: scale(1.03); }
 
-    #cumplido{
-      margin-top:22px;
-      min-height:56px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:clamp(1rem,2.5vw,1.2rem);
-      color:#333;
-      padding:14px 18px;
-      border-radius:12px;
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(255,77,166,0.3);
+    }
+    .btn:active {
+      transform: translateY(2px) scale(0.97);
+    }
+
+    #cumplido {
+      margin-top: 24px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: #333;
+      padding: 14px 20px;
+      border-radius: 14px;
       background: rgba(255,255,255,0.85);
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.6);
-      opacity:0;
+      box-shadow: inset 0 2px 6px rgba(255,255,255,0.6);
+      opacity: 0;
+      transform: translateY(10px);
       transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
@@ -119,52 +104,50 @@
       opacity: 1;
     }
 
-    .heart{
-      position:absolute;
-      width:18px;height:18px;
+    /* Corazones flotantes */
+    .heart {
+      position: absolute;
+      width: 20px; height: 20px;
       transform: rotate(-45deg);
-      left:50%;
-      top:50%;
-      opacity:0.9;
-      pointer-events:none;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: floatHeart 6s linear infinite;
     }
-    .heart::before, .heart::after{
-      content:"";
-      position:absolute;
-      width:18px;height:18px;
-      background:var(--accent);
-      border-radius:50%;
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px; height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
     }
-    .heart::after{ left:9px }
-    .h1{ left:8%; top:12%; animation: float1 6s linear infinite; opacity:.7 }
-    .h2{ left:85%; top:20%; animation: float2 7s linear infinite; transform:scale(.9) }
-    .h3{ left:20%; top:78%; animation: float3 5.5s linear infinite; transform:scale(.8) }
-    .h4{ left:68%; top:82%; animation: float1 6.5s linear infinite; transform:scale(.75) opacity:.8 }
+    .heart::after { left: 10px; }
 
-    @keyframes float1{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-18px) } 100%{ transform:translateY(0) } }
-    @keyframes float2{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-26px) } 100%{ transform:translateY(0) } }
-    @keyframes float3{ 0%{ transform:translateY(0) } 50%{ transform:translateY(-12px) } 100%{ transform:translateY(0) } }
+    .h1 { left: 10%; top: 15%; animation-duration: 6s; }
+    .h2 { left: 85%; top: 20%; animation-duration: 7s; transform: scale(0.9); }
+    .h3 { left: 25%; top: 75%; animation-duration: 5.5s; transform: scale(0.8); }
+    .h4 { left: 70%; top: 80%; animation-duration: 6.5s; transform: scale(0.75); opacity: 0.8; }
 
-    @media (max-width:420px){
-      .card{ padding:20px;border-radius:14px }
-      #cumplido{ font-size:1rem; min-height:64px }
-      .mensaje-inicial{ font-size:1rem; padding:12px 16px }
+    @keyframes floatHeart {
+      0% { transform: translateY(0) rotate(-45deg); }
+      50% { transform: translateY(-20px) rotate(-45deg); }
+      100% { transform: translateY(0) rotate(-45deg); }
+    }
+
+    @media (max-width: 420px) {
+      .card { padding: 20px; border-radius: 16px; }
+      #cumplido { font-size: 1rem; min-height: 64px; }
+      h1 { font-size: 1.5rem; }
+      .subtitle { font-size: 1.2rem; }
+      .btn { padding: 12px 20px; font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Mensaje inicial animado -->
-  <div class="mensaje-inicial">
-    💌 Hola Nicool, esta página es para recordarte lo especial que eres. ¡Disfruta cada cumplido! 🌸
-  </div>
-
   <div class="card">
     <h1>💖 Generador de cumplidos para Nicool 💖</h1>
     <div class="subtitle">para la niña con los ojitos más hermosos ✨</div>
 
     <button class="btn" id="btn">Dame un cumplido 🌸</button>
-
     <div id="cumplido"></div>
 
     <div class="heart h1"></div>
@@ -236,7 +219,7 @@
       const i = Math.floor(Math.random() * cumplidos.length);
       out.textContent = cumplidos[i];
       out.classList.remove('show');
-      void out.offsetWidth; // reinicia la animación
+      void out.offsetWidth;
       out.classList.add('show');
     }
 
