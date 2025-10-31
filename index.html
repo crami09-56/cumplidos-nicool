@@ -3,51 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Cumplidos Mágicos — Nicool 💖</title>
+<title>✨ Generador de Cumplidos Épico — Nicool 💖</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* ====================== Variables y Reset ====================== */
 :root{
   --accent1:#ff4da6;
   --accent2:#ff85c1;
   --bg1:#ffd6e9;
   --bg2:#fff0f6;
   --text:#333;
+  --sparkle1:#fff;
+  --sparkle2:#ffb3d9;
 }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins', sans-serif;}
+body{overflow:hidden; min-height:100vh; display:flex; justify-content:center; align-items:center; background:linear-gradient(135deg,var(--bg1),var(--bg2)); transition: background 3s ease; position:relative;}
 
-/* Reset básico */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: linear-gradient(135deg, var(--bg1), var(--bg2));
-  overflow:hidden;
-  position:relative;
-}
-
-/* Card principal */
+/* ====================== Card Principal ====================== */
 .card{
   width:clamp(320px,80vw,760px);
-  background: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.6);
   border-radius:25px;
-  padding:36px;
+  padding:40px;
   text-align:center;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 50px rgba(0,0,0,0.15);
   backdrop-filter: blur(8px);
   position:relative;
   animation: cardPulse 6s infinite alternate;
 }
 @keyframes cardPulse{
   0%{ transform: scale(1);}
-  50%{ transform: scale(1.03);}
+  50%{ transform: scale(1.04);}
   100%{ transform: scale(1);}
 }
 
-/* Título y subtítulo */
+/* ====================== Título y Subtítulo ====================== */
 h1{
-  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-size:clamp(1.8rem,4vw,3rem);
   color: var(--accent1);
   margin-bottom:14px;
   text-shadow: 0 0 10px #fff, 0 0 20px #ffb3d9, 0 0 30px #ff85c1;
@@ -62,75 +54,97 @@ h1{
   font-size:clamp(1.2rem,3vw,2rem);
   color:#ff4da6;
   text-shadow:0 0 8px #fff,0 0 16px #ffb3d9;
-  margin-bottom:24px;
+  margin-bottom:30px;
+  animation: floatSubtitle 4s infinite alternate;
+}
+@keyframes floatSubtitle{
+  0%{ transform: translateY(0px);}
+  50%{ transform: translateY(-6px);}
+  100%{ transform: translateY(0px);}
 }
 
-/* Botón mágico */
+/* ====================== Botón ====================== */
 .btn{
   background: linear-gradient(90deg,var(--accent1),var(--accent2));
   color:white;
   border:none;
-  padding:16px 28px;
-  border-radius:18px;
-  font-size:1.2rem;
+  padding:16px 30px;
+  border-radius:20px;
+  font-size:1.3rem;
   cursor:pointer;
-  box-shadow:0 10px 30px rgba(255,77,166,0.4);
+  box-shadow:0 10px 40px rgba(255,77,166,0.4);
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.btn:hover{ transform: scale(1.08); box-shadow:0 14px 36px rgba(255,77,166,0.6);}
+.btn:hover{ transform: scale(1.1); box-shadow:0 14px 45px rgba(255,77,166,0.6);}
 .btn:active{ transform: scale(0.97); }
 
-/* Div de cumplido */
+/* ====================== Div de Cumplido ====================== */
 #cumplido{
-  margin-top:28px;
-  min-height:70px;
+  margin-top:30px;
+  min-height:80px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:clamp(1.2rem,3vw,1.6rem);
+  font-size:clamp(1.2rem,3vw,1.8rem);
   color:var(--text);
-  padding:14px 24px;
-  border-radius:16px;
-  background: rgba(255,255,255,0.8);
-  box-shadow: inset 0 2px 2px rgba(255,255,255,0.6);
+  padding:16px 26px;
+  border-radius:18px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.6);
   opacity:0;
   transform: translateY(20px);
   transition: transform 0.6s ease, opacity 0.6s ease;
+  position:relative;
 }
 #cumplido.show{
   opacity:1;
   transform: translateY(0);
-  animation: sparkleText 1.5s forwards;
 }
 
-/* Sparkle en el texto */
-@keyframes sparkleText{
-  0%{ text-shadow: 0 0 0px #fff;}
-  50%{ text-shadow:0 0 6px #fff,0 0 12px #ffb3d9,0 0 20px #ff85c1;}
-  100%{ text-shadow:0 0 0px #fff;}
-}
-
-/* Corazones y partículas */
+/* ====================== Corazones y Partículas ====================== */
 .heart, .particle{
   position:absolute;
   width:20px; height:20px;
   transform: rotate(-45deg);
   pointer-events:none;
+  z-index:99;
 }
 .heart::before, .particle::before{ content:""; position:absolute; width:20px;height:20px;border-radius:50%; background:#ff4da6;}
 .heart::after, .particle::after{ content:""; position:absolute; width:20px;height:20px;border-radius:50%; background:#ff85c1; left:10px;}
 
-/* Animaciones flotantes */
+/* ====================== Animaciones ====================== */
 @keyframes floatHeart{
   0%{ transform: translateY(0px) rotate(-45deg); opacity:1;}
-  100%{ transform: translateY(-80px) rotate(-45deg); opacity:0;}
+  100%{ transform: translateY(-100px) rotate(-45deg); opacity:0;}
 }
 @keyframes floatParticle{
   0%{ transform: translateY(0px) rotate(0deg); opacity:1;}
   100%{ transform: translateY(-60px) rotate(360deg); opacity:0;}
 }
 
-/* Fondo animado de estrellas */
+/* ====================== Sparkle Letras ====================== */
+.sparkle{
+  display:inline-block;
+  position:relative;
+  animation: sparkleAnim 1.5s infinite;
+}
+@keyframes sparkleAnim{
+  0%{ text-shadow:0 0 2px #fff;}
+  50%{ text-shadow:0 0 6px #fff,0 0 12px #ffb3d9,0 0 20px #ff85c1;}
+  100%{ text-shadow:0 0 2px #fff;}
+}
+
+/* ====================== Fondo de Gradientes Animados ====================== */
+@keyframes bgShift{
+  0%{ background: linear-gradient(135deg, #ffd6e9, #fff0f6);}
+  25%{ background: linear-gradient(135deg, #ffe0f0, #fff7f8);}
+  50%{ background: linear-gradient(135deg, #ffd0e5, #fff0f5);}
+  75%{ background: linear-gradient(135deg, #ffe6f2, #fff8fa);}
+  100%{ background: linear-gradient(135deg, #ffd6e9, #fff0f6);}
+}
+body{animation:bgShift 20s infinite linear;}
+
+/* ====================== Fondo Estrellado ====================== */
 .star{
   position:absolute;
   width:2px; height:2px;
@@ -145,6 +159,12 @@ h1{
   100%{ opacity:0.2; transform: scale(1);}
 }
 
+/* ====================== Animación pulsante card ====================== */
+@keyframes cardPulse{
+  0%{ transform: scale(1);}
+  50%{ transform: scale(1.04);}
+  100%{ transform: scale(1);}
+}
 </style>
 </head>
 <body>
@@ -157,82 +177,91 @@ h1{
 </div>
 
 <script>
-// Frases mágicas
+// ====================== Lista de Cumplidos ======================
 const cumplidos = [
-  "Eres increíble tal como eres 💖",
-  "Tu sonrisa hace que todo sea mejor 😄",
-  "Tienes un estilo que siempre sorprende 👏",
-  "Eres divertida y contagias alegría 🌟",
-  "Tu mirada tiene algo que encanta 👀",
-  "Eres fuerte y eso inspira 💪",
-  "Tu risa es un regalo para quienes te rodean 🎁",
-  "Eres dulce sin esfuerzo 🍓",
-  "Siempre sabes cómo alegrar un lugar 🌈",
-  "Eres única y eso te hace especial 💕",
-  "Tu energía es imposible de ignorar ✨",
-  "Eres encantadora sin siquiera intentarlo 😍",
-  "Tu forma de ser ilumina cualquier día 🌞",
-  "Eres creativa y llena de ideas geniales 🎨",
-  "Tu alegría es contagiosa y linda 😄",
-  "Eres como un abrazo cálido en un día frío 🤗",
-  "Tu personalidad brilla más que cualquier estrella ⭐",
-  "Eres divertida y siempre haces sonreír 😌",
-  "Tu estilo y tu forma de ser combinan perfecto 👗",
-  "Eres un soplo de aire fresco 💨"
+"Eres increíble tal como eres 💖","Tu sonrisa hace que todo sea mejor 😄",
+"Tienes un estilo que siempre sorprende 👏","Eres divertida y contagias alegría 🌟",
+"Tu mirada tiene algo que encanta 👀","Eres fuerte y eso inspira 💪",
+"Tu risa es un regalo para quienes te rodean 🎁","Eres dulce sin esfuerzo 🍓",
+"Siempre sabes cómo alegrar un lugar 🌈","Eres única y eso te hace especial 💕",
+"Tu energía es imposible de ignorar ✨","Eres encantadora sin siquiera intentarlo 😍",
+"Tu forma de ser ilumina cualquier día 🌞","Eres creativa y llena de ideas geniales 🎨",
+"Tu alegría es contagiosa y linda 😄","Eres como un abrazo cálido en un día frío 🤗"
 ];
 
-// Elementos
+// ====================== Elementos ======================
 const btn = document.getElementById('btn');
 const out = document.getElementById('cumplido');
 
-// Función para mostrar cumplido
+// ====================== Mostrar Cumplido letra por letra ======================
 function mostrarCumplido(){
   const i = Math.floor(Math.random()*cumplidos.length);
-  out.textContent = cumplidos[i];
-  out.classList.remove('show');
-  void out.offsetWidth;
+  const texto = cumplidos[i];
+  out.textContent="";
   out.classList.add('show');
+  
+  let idx=0;
+  const interval = setInterval(()=>{
+    if(idx<texto.length){
+      const span = document.createElement('span');
+      span.textContent=texto[idx];
+      span.className="sparkle";
+      out.appendChild(span);
+      idx++;
+    } else clearInterval(interval);
+  },50);
 
-  // Generar corazones y partículas
-  for(let j=0;j<7;j++){ crearCorazon(); crearParticula(); }
+  // Corazones y partículas
+  for(let j=0;j<10;j++){ crearCorazon(); crearParticula(); }
 }
 
-// Crear corazones mágicos
+// ====================== Crear Corazones ======================
 function crearCorazon(){
-  const heart = document.createElement('div');
+  const heart=document.createElement('div');
   heart.className='heart';
-  heart.style.left = Math.random()*90+'%';
-  heart.style.top = Math.random()*80+'%';
-  heart.style.width = heart.style.height = 15 + Math.random()*20 + 'px';
+  heart.style.left=Math.random()*90+'%';
+  heart.style.top=Math.random()*80+'%';
+  heart.style.width=heart.style.height=15+Math.random()*20+'px';
   document.body.appendChild(heart);
-  heart.animate([
-    {transform:'translateY(0px) rotate(-45deg)', opacity:1},
-    {transform:'translateY(-100px) rotate(-45deg)', opacity:0}
-  ],{duration:2000 + Math.random()*2000, easing:'ease-out'});
-  setTimeout(()=>heart.remove(),4000);
+  heart.animate([{transform:'translateY(0px) rotate(-45deg)',opacity:1},
+                 {transform:'translateY(-150px) rotate(-45deg)',opacity:0}],
+                {duration:2500+Math.random()*2000,easing:'ease-out'});
+  setTimeout(()=>heart.remove(),4500);
 }
 
-// Crear partículas mágicas
+// ====================== Crear Partículas ======================
 function crearParticula(){
-  const particle = document.createElement('div');
+  const particle=document.createElement('div');
   particle.className='particle';
-  particle.style.left = Math.random()*100+'%';
-  particle.style.top = Math.random()*100+'%';
-  particle.style.width = particle.style.height = 5 + Math.random()*10 + 'px';
+  particle.style.left=Math.random()*100+'%';
+  particle.style.top=Math.random()*100+'%';
+  particle.style.width=particle.style.height=5+Math.random()*10+'px';
   document.body.appendChild(particle);
-  particle.animate([
-    {transform:'translateY(0px) rotate(0deg)', opacity:1},
-    {transform:'translateY(-60px) rotate(360deg)', opacity:0}
-  ],{duration:1500 + Math.random()*1500, easing:'ease-out'});
-  setTimeout(()=>particle.remove(),3000);
+  particle.animate([{transform:'translateY(0px) rotate(0deg)',opacity:1},
+                    {transform:'translateY(-80px) rotate(360deg)',opacity:0}],
+                   {duration:1800+Math.random()*1500,easing:'ease-out'});
+  setTimeout(()=>particle.remove(),3500);
 }
 
-// Botón
-btn.addEventListener('click', mostrarCumplido);
+// ====================== Corazones siguen el cursor ======================
+document.addEventListener('mousemove', e=>{
+  if(Math.random()<0.1){ // cada tanto
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.style.left=e.clientX+'px';
+    heart.style.top=e.clientY+'px';
+    heart.style.width=heart.style.height=10+Math.random()*15+'px';
+    document.body.appendChild(heart);
+    heart.animate([{transform:'translateY(0px) rotate(-45deg)',opacity:1},
+                   {transform:'translateY(-100px) rotate(-45deg)',opacity:0}],
+                  {duration:2000+Math.random()*2000,easing:'ease-out'});
+    setTimeout(()=>heart.remove(),3000);
+  }
+});
 
-// Fondo estrellado
-for(let i=0;i<100;i++){
-  const star = document.createElement('div');
+// ====================== Lluvia de estrellas ======================
+for(let i=0;i<120;i++){
+  const star=document.createElement('div');
   star.className='star';
   star.style.left=Math.random()*100+'%';
   star.style.top=Math.random()*100+'%';
@@ -240,6 +269,9 @@ for(let i=0;i<100;i++){
   star.style.animationDuration=2+Math.random()*3+'s';
   document.body.appendChild(star);
 }
+
+// ====================== Botón ======================
+btn.addEventListener('click', mostrarCumplido);
 
 </script>
 </body>
