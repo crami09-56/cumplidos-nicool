@@ -123,98 +123,97 @@ h1 {
 
   <button class="btn" id="btn">Dame un cumplido 🌸</button>
   <div id="cumplido"></div>
-
-    <div class="heart h1"></div>
-    <div class="heart h2"></div>
-    <div class="heart h3"></div>
-    <div class="heart h4"></div>
 </div>
 
 <script>
-const cumplidos = [
-  "Eres increíble tal como eres 💖",
-  "Tu sonrisa hace que todo sea mejor 😄",
-  "Tienes un estilo que siempre sorprende 👏",
-  "Eres divertida y contagias alegría 🌟",
-  "Tu mirada tiene algo que encanta 👀",
-  "Eres fuerte y eso inspira 💪",
-  "Tu risa es un regalo para quienes te rodean 🎁",
-  "Eres dulce sin esfuerzo 🍓",
-  "Siempre sabes cómo alegrar un lugar 🌈",
-  "Eres única y eso te hace especial 💕",
-  "Tu energía es imposible de ignorar ✨",
-  "Eres encantadora sin siquiera intentarlo 😍",
-  "Tu forma de ser ilumina cualquier día 🌞",
-  "Eres creativa y llena de ideas geniales 🎨",
-  "Tu alegría es contagiosa y linda 😄",
-  "Eres como un abrazo cálido en un día frío 🤗",
-  "Tu personalidad brilla más que cualquier estrella ⭐",
-  "Eres divertida y siempre haces sonreír 😌",
-  "Tu estilo y tu forma de ser combinan perfecto 👗",
-  "Eres un soplo de aire fresco 💨",
-  "Tu risa podría alegrar cualquier habitación 🎶",
-  "Eres dulce, fuerte y valiente 💖",
-  "Siempre sabes cómo hacer sentir bien a los demás 🌸",
-  "Eres luz en los días grises 💡",
-  "Tu sonrisa podría iluminar ciudades enteras 🌆",
-  "Eres un rayito de sol incluso en días nublados 🌤️",
-  "Tu entusiasmo es contagioso y lindo 🌷",
-  "Eres un arcoíris después de la tormenta 🌈",
-  "Tu presencia hace que todo sea más bonito 🌟",
-  "Eres inspiración sin siquiera intentarlo 💫",
-  "Tu corazón es gigante y lleno de amor 💛",
-  "Eres magia pura ✨",
-  "Tu forma de ser hace que todos se sientan mejor 😄",
-  "Eres un regalo que alegra la vida de otros 🎁",
-  "Tu mirada transmite paz y calma 🕊️",
-  "Eres única, y eso te hace brillante 💖",
-  "Tu risa es música para quien la escucha 🎵",
-  "Eres creatividad en acción 🎨",
-  "Tu alegría hace que los días normales sean especiales 🌸",
-  "Eres dulce como el mejor postre 🍫",
-  "Tu bondad se nota en todo lo que haces 💛",
-  "Eres como un abrazo que calma el alma 🤗",
-  "Tu energía positiva hace todo más bonito ✨",
-  "Eres un sol que nunca deja de brillar 🌞",
-  "Tu ternura derrite corazones 💗",
-  "Eres inspiración para quienes te rodean 🌷",
-  "Tu presencia ilumina cualquier lugar 🌟",
-  "Eres un soplo de felicidad 💨",
-  "Tu sonrisa es contagio de alegría 😍",
-  "Eres luz y alegría al mismo tiempo 🌈",
-  "Tu personalidad es encantadora y genuina 💖",
-  "Eres un motivo para sonreír todos los días 😊"
-];
+document.addEventListener('DOMContentLoaded', () => {
+  const cumplidos = [
+    "Eres increíble tal como eres 💖",
+    "Tu sonrisa hace que todo sea mejor 😄",
+    "Tienes un estilo que siempre sorprende 👏",
+    "Eres divertida y contagias alegría 🌟",
+    "Tu mirada tiene algo que encanta 👀",
+    "Eres fuerte y eso inspira 💪",
+    "Tu risa es un regalo para quienes te rodean 🎁",
+    "Eres dulce sin esfuerzo 🍓",
+    "Siempre sabes cómo alegrar un lugar 🌈",
+    "Eres única y eso te hace especial 💕",
+    "Tu energía es imposible de ignorar ✨",
+    "Eres encantadora sin siquiera intentarlo 😍",
+    "Tu forma de ser ilumina cualquier día 🌞",
+    "Eres creativa y llena de ideas geniales 🎨",
+    "Tu alegría es contagiosa y linda 😄",
+    "Eres como un abrazo cálido en un día frío 🤗",
+    "Tu personalidad brilla más que cualquier estrella ⭐",
+    "Eres divertida y siempre haces sonreír 😌",
+    "Tu estilo y tu forma de ser combinan perfecto 👗",
+    "Eres un soplo de aire fresco 💨",
+    "Tu risa podría alegrar cualquier habitación 🎶",
+    "Eres dulce, fuerte y valiente 💖",
+    "Siempre sabes cómo hacer sentir bien a los demás 🌸",
+    "Eres luz en los días grises 💡",
+    "Tu sonrisa podría iluminar ciudades enteras 🌆",
+    "Eres un rayito de sol incluso en días nublados 🌤️",
+    "Tu entusiasmo es contagioso y lindo 🌷",
+    "Eres un arcoíris después de la tormenta 🌈",
+    "Tu presencia hace que todo sea más bonito 🌟",
+    "Eres inspiración sin siquiera intentarlo 💫",
+    "Tu corazón es gigante y lleno de amor 💛",
+    "Eres magia pura ✨",
+    "Tu forma de ser hace que todos se sientan mejor 😄",
+    "Eres un regalo que alegra la vida de otros 🎁",
+    "Tu mirada transmite paz y calma 🕊️",
+    "Eres única, y eso te hace brillante 💖",
+    "Tu risa es música para quien la escucha 🎵",
+    "Eres creatividad en acción 🎨",
+    "Tu alegría hace que los días normales sean especiales 🌸",
+    "Eres dulce como el mejor postre 🍫",
+    "Tu bondad se nota en todo lo que haces 💛",
+    "Eres como un abrazo que calma el alma 🤗",
+    "Tu energía positiva hace todo más bonito ✨",
+    "Eres un sol que nunca deja de brillar 🌞",
+    "Tu ternura derrite corazones 💗",
+    "Eres inspiración para quienes te rodean 🌷",
+    "Tu presencia ilumina cualquier lugar 🌟",
+    "Eres un soplo de felicidad 💨",
+    "Tu sonrisa es contagio de alegría 😍",
+    "Eres luz y alegría al mismo tiempo 🌈",
+    "Tu personalidad es encantadora y genuina 💖",
+    "Eres un motivo para sonreír todos los días 😊"
+  ];
 
-const cuteTexts = [
-  "💖 Yay!", "✨ Wow!", "🌸 Cute!", "💫 Hi!", "😍 Yes!", "🌷 Fun!", "🎶 Yay!", "💛 Wow!"
-];
+  const cuteTexts = [
+    "💖 Yay!", "✨ Wow!", "🌸 Cute!", "💫 Hi!", "😍 Yes!", "🌷 Fun!", "🎶 Yay!", "💛 Wow!"
+  ];
 
-// Botón funciona perfectamente
-const btn = document.getElementById('btn');
-const out = document.getElementById('cumplido');
-btn.addEventListener('click', () => {
-  const i = Math.floor(Math.random() * cumplidos.length);
-  out.textContent = cumplidos[i];
-  out.classList.remove('show');
-  void out.offsetWidth;
-  out.classList.add('show');
+  const btn = document.getElementById('btn');
+  const out = document.getElementById('cumplido');
+
+  // Botón funciona correctamente
+  btn.addEventListener('click', () => {
+    const i = Math.floor(Math.random() * cumplidos.length);
+    out.textContent = cumplidos[i];
+    out.classList.remove('show');
+    void out.offsetWidth; // reinicia la animación
+    out.classList.add('show');
+  });
+
+  // Frases cortas que caen
+  function createFallingText() {
+    const span = document.createElement('span');
+    span.className = 'falling-text';
+    span.style.left = Math.random() * 100 + 'vw';
+    span.style.fontSize = (14 + Math.random()*12) + 'px';
+    span.style.color = `hsl(${Math.random()*360},80%,70%)`;
+    span.style.animationDuration = (5 + Math.random()*4) + 's';
+    span.style.top = "-30px";
+    span.textContent = cuteTexts[Math.floor(Math.random()*cuteTexts.length)];
+    document.body.appendChild(span);
+    setTimeout(() => { span.remove(); }, 9000);
+  }
+
+  setInterval(createFallingText, 500);
 });
-
-// Frases cortas que caen
-function createFallingText() {
-  const span = document.createElement('span');
-  span.className = 'falling-text';
-  span.style.left = Math.random() * 100 + 'vw';
-  span.style.fontSize = (14 + Math.random()*12) + 'px';
-  span.style.color = `hsl(${Math.random()*360},80%,70%)`;
-  span.style.animationDuration = (5 + Math.random()*4) + 's';
-  span.style.top = "-30px"; // Arriba de todo
-  span.textContent = cuteTexts[Math.floor(Math.random()*cuteTexts.length)];
-  document.body.appendChild(span);
-  setTimeout(() => { span.remove(); }, 9000);
-}
-setInterval(createFallingText, 500); // Más lento y menos saturado
 </script>
 </body>
 </html>
